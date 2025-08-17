@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Web School Clone – Learn by Doing</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container" style="display:flex; align-items:center; gap:16px;">
+      <div class="brand">
+        <div class="brand-badge">WS</div>
+        <div>
+          <div style="font-weight:800;">Web School Clone</div>
+          <div style="font-size:12px; color:#64748b;">Learn Web Dev in Urdu & English</div>
+        </div>
+      </div>
+      <nav style="margin-left:auto;">
+        <a href="index.html">Home</a>
+        <a href="tutorials/html.html">HTML</a>
+        <a href="tutorials/css.html">CSS</a>
+        <a href="tutorials/js.html">JavaScript</a>
+        <a href="tryit.html">Try It</a>
+        <a href="quiz.html">Quiz</a>
+        <button id="themeBtn" class="btn ghost">🌓</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h1 style="margin:0;">Build skills by coding</h1>
+      <p style="color:#64748b;">W3Schools-style learning with live editor, quizzes, examples, and a massive feature registry you can grow into a full platform.</p>
+      <div id="userBox" style="margin-top:8px;"></div>
+    </section>
+
+    <section class="grid" style="grid-template-columns: 1.5fr 1fr;">
+      <div class="card">
+        <h2 style="margin-top:0;">Core Topics</h2>
+        <div class="grid grid-3">
+          <a class="card" href="tutorials/html.html"><b>HTML</b><br><span class="muted">Basics to forms</span></a>
+          <a class="card" href="tutorials/css.html"><b>CSS</b><br><span class="muted">Layout & responsive</span></a>
+          <a class="card" href="tutorials/js.html"><b>JavaScript</b><br><span class="muted">DOM & fetch</span></a>
+        </div>
+      </div>
+      <div class="card">
+        <h2 style="margin-top:0;">Live Editor</h2>
+        <p>Test code in your browser with the <b>Try It</b> page.</p>
+        <a class="btn primary" href="tryit.html">Open Editor ▶</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 style="margin:0;">Feature Registry <span class="badge" id="featureCount">…</span></h2>
+      <p style="color:#64748b; margin-top:6px;">Scope for 1000+ functions & features. Filter and extend as you build.</p>
+      <div style="display:flex; gap:8px; align-items:center; margin-bottom:10px;">
+        <input id="search" placeholder="Search features e.g. quiz, JWT, payments">
+        <select id="filterCat" style="max-width:220px;">
+          <option value="all">All categories</option>
+          <option value="learning">Learning</option>
+          <option value="editor">Editor</option>
+          <option value="account">Account</option>
+          <option value="admin">Admin</option>
+          <option value="content">Content</option>
+          <option value="payments">Payments</option>
+          <option value="infra">Infra</option>
+        </select>
+        <span id="resultCount" class="badge">—</span>
+      </div>
+      <div id="featureList" class="grid"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2025 Web School Clone · Built for learning</div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

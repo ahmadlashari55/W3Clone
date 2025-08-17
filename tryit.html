@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Try It Yourself</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    #layout { display:flex; height: calc(100vh - 70px); }
+    textarea { width:50%; height:100%; border:none; padding:12px; resize:none; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size:14px; outline:none; }
+    iframe { width:50%; height:100%; border:none; background:white; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container" style="display:flex; align-items:center; gap:12px;">
+      <div class="brand"><div class="brand-badge">WS</div><b>Try It</b></div>
+      <div style="margin-left:auto; display:flex; gap:8px;">
+        <button class="btn primary" onclick="runCode()">Run ▶</button>
+        <button class="btn" onclick="insertExample('html')">HTML Example</button>
+        <button class="btn" onclick="insertExample('js')">JS Example</button>
+        <button id="themeBtn" class="btn ghost" onclick="toggleTheme()">🌓</button>
+      </div>
+    </div>
+  </header>
+
+  <div id="layout">
+<textarea id="code"><!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Hello</title>
+  <style>h1{color: #4f46e5; font-family: system-ui}</style>
+</head>
+<body>
+  <h1>Hello World</h1>
+  <p>Edit the code and click Run ▶</p>
+  <button onclick="alert('JS works!')">Click me</button>
+</body>
+</html></textarea>
+    <iframe id="out"></iframe>
+  </div>
+
+<script>
+function runCode(){
+  const iframe = document.getElementById('out');
+  const code = document.getElementById('code').value;
+  const doc = iframe.contentDocument;
+  doc.open(); doc.write(code); doc.close();
+}
+function insertExample(kind){
+  if(kind==='html'){
+    document.getElementById('code').value = `<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .box{padding:20px;border-radius:12px;background:#e2e8f0}
+  </style>
+</head>
+<body>
+  <div class="box">HTML + CSS example</div>
+</body>
+</html>`;
+  } else {
+    document.getElementById('code').value = `<!DOCTYPE html>
+<html><body>
+  <div id="app"></div>
+  <script>
+    const el = document.getElementById('app');
+    el.innerHTML = '<b>JS generated content</b>';
+  <\/script>
+</body></html>`;
+  }
+  runCode();
+}
+// theme
+function toggleTheme(){ document.body.classList.toggle('dark'); }
+window.addEventListener('DOMContentLoaded', runCode);
+</script>
+</body>
+</html>

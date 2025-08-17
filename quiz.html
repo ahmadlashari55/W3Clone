@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quizzes</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container" style="display:flex; align-items:center; gap:12px;">
+      <div class="brand"><div class="brand-badge">WS</div><b>Quizzes</b></div>
+      <a style="margin-left:auto;" href="index.html">Back Home</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>JavaScript Basics Quiz</h2>
+      <div id="quiz"></div>
+      <button class="btn primary" id="submit">Submit</button>
+      <div id="result" style="margin-top:10px; font-weight:700;"></div>
+    </section>
+  </main>
+
+<script>
+const questions = [
+  {q:'Which method selects an element by id?', a:['querySelectorAll', 'getElementById', 'getElementsByClassName'], correct:1},
+  {q:'Which symbol starts a comment in JS?', a:['//', '<!--', '#'], correct:0},
+  {q:'Which keyword declares a constant?', a:['var','let','const'], correct:2},
+  {q:'What does DOM stand for?', a:['Document Object Model','Data Object Map','Document Oriented Module'], correct:0},
+  {q:'Which method adds to the end of an array?', a:['push','pop','shift'], correct:0}
+];
+function renderQuiz(){
+  const wrap = document.getElementById('quiz');
+  wrap.innerHTML = questions.map((q,i)=>`
+    <div class="card">
+      <div><b>Q${i+1}.</b> ${q.q}</div>
+      ${q.a.map((opt,idx)=>`
+        <label style="display:flex; gap:8px; align-items:center; margin-top:6px;">
+          <input type="radio" name="q${i}" value="${idx}"> ${opt}
+        </label>`).join('')}
+    </div>
+  `).join('');
+}
+document.getElementById('submit').addEventListener('click', ()=>{
+  let score=0;
+  questions.forEach((q,i)=>{
+    const chosen = document.querySelector(`input[name="q${i}"]:checked`);
+    if(chosen && Number(chosen.value)===q.correct) score++;
+  });
+  const pct = Math.round(score/questions.length*100);
+  document.getElementById('result').textContent = `Score: ${score}/${questions.length} (${pct}%)`;
+});
+renderQuiz();
+</script>
+</body>
+</html>
